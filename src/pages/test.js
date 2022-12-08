@@ -51,6 +51,7 @@ const Test = () => {
         <GrowthBookProvider growthbook={growthbook}>
             <div>
                 <Wutever />
+                <h2>and something else</h2>
             </div>
         </GrowthBookProvider>
     );
