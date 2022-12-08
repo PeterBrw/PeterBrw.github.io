@@ -6,7 +6,7 @@ const Wutever = () => {
 
     console.log(growthbook)
 
-    const { template } = growthbook.getFeatureValue('h1-title', 'fallback value');
+    const { template } = growthbook.getFeatureValue('h1-title', 'fallback value1');
 
     return <div>{template}  </div>;
 };
