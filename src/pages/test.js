@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import { GrowthBook, GrowthBookProvider } from '@growthbook/growthbook-react';
 import { nanoid } from 'nanoid';
 import Wutever from '../components/Wutever/Wutever';
+import { Helmet } from "react-helmet";
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -49,6 +49,10 @@ const Test = () => {
 
     return (
         <GrowthBookProvider growthbook={growthbook}>
+            <Helmet>
+                <title>Learning React Helmet!</title>
+                <meta name='description' content='Beginner friendly page for learning React Helmet.' />
+            </Helmet>
             <div>
                 <Wutever />
                 <h2>and something else</h2>

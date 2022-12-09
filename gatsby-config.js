@@ -7,6 +7,7 @@ module.exports = {
     plugins: [
         `gatsby-plugin-image`,
         'gatsby-plugin-cname',
+        'gatsby-plugin-react-helmet',
         'gatsby-plugin-postcss',
         {
             resolve: 'gatsby-plugin-react-svg',
