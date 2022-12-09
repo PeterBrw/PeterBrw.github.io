@@ -21,6 +21,7 @@
     "gatsby": "^4.23.0",
     "gatsby-background-image": "^1.6.0",
     "gatsby-plugin-canonical-urls": "^4.11.0",
+    "gatsby-plugin-cname": "^1.0.0",
     "gatsby-plugin-emotion": "^7.21.0",
     "gatsby-plugin-feed": "^4.23.0",
     "gatsby-plugin-gdpr-cookies": "^2.0.8",
