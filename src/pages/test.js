@@ -59,7 +59,7 @@ const Test = () => {
                     <h2>and something else</h2>
                 </div>
             </GrowthBookProvider>
-          and something else to test
+          WIP
         </>
     );
 };
