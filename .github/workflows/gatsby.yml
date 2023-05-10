@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 16.x
 
-      -name: Install dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Build Gatsby site
