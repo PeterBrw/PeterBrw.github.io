@@ -47,6 +47,8 @@ const Test = () => {
         // });
     }, []);
 
+    console.log('nothing')
+
     return (
         <>
             <GrowthBookProvider growthbook={growthbook}>
