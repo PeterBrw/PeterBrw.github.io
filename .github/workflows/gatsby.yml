@@ -7,9 +7,6 @@ on:
 
   workflow_dispatch:
 
-env:
-  ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -24,6 +21,9 @@ jobs:
       - run: npm install
 
       - run: npm run build --if-present
+        with:
+          env: 
+            ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
       
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
