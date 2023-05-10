@@ -1,6 +1,26 @@
 require('dotenv').config();
 
-console.log('process.env.ALGOLIA_APP_ID', process.env.ALGOLIA_APP_ID);
+const myQuery = `query {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+            nodes {
+            id
+                frontmatter {
+                    title
+                    description
+                }
+            }
+        }
+    }`;
+
+const queries = [
+    {
+        query: myQuery,
+        queryVariables: {},
+        transformer: ({ data }) => {
+            return data.allMarkdownRemark.nodes;
+        }
+    }
+];
 
 module.exports = {
     siteMetadata: {
@@ -146,6 +166,20 @@ module.exports = {
             resolve: 'gatsby-plugin-netlify-cms',
             options: {
                 modulePath: `${__dirname}/src/common/netlify.js`
+            }
+        },
+        {
+            resolve: `gatsby-plugin-algolia`,
+            options: {
+                appId: `TLBKQDFCMT`,
+                apiKey: process.env.ALGOLIA_APP_ID,
+                indexName: `test`,
+                queries,
+                chunkSize: 10000,
+                concurrentQueries: true,
+                dryRun: false,
+                continueOnFailure: false,
+                algoliasearchOptions: undefined
             }
         }
     ]
