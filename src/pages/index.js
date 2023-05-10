@@ -20,6 +20,8 @@ const BlogIndex = ({ data, location }) => {
         );
     }
 
+    console.log('process.env.ALGOLIA_APP_ID', process.env.ALGOLIA_APP_ID);
+
     return (
         <Layout location={location} title={siteTitle}>
             <Bio />
