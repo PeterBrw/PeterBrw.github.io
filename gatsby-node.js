@@ -1,5 +1,15 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const convertReactFilesToMD = require('./convertReactToMd');
+const deleteMDHardCodedFiles = require('./deleteMDHardCodedFiles');
+
+exports.onPreInit = async () => {
+    await convertReactFilesToMD();
+};
+
+exports.onPostBuild = async () => {
+    await deleteMDHardCodedFiles();
+};
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions;

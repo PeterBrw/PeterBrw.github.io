@@ -20,10 +20,23 @@ const BlogIndex = ({ data, location }) => {
         );
     }
 
-    console.log('process.env.ALGOLIA_APP_ID', process.env.ALGOLIA_APP_ID);
-
     return (
         <Layout location={location} title={siteTitle}>
+            <div className='hidden' data-template-key>
+                hardcoded-pages
+            </div>
+            <div className='hidden' data-permalink>
+                /
+            </div>
+            <div className='hidden' data-title>
+                Index{' '}
+            </div>
+            <div className='hidden' data-description>
+                Just description
+            </div>
+            <div className='hidden' data-category>
+                website
+            </div>
             <Bio />
             <ol style={{ listStyle: `none` }}>
                 {posts.map((post) => {
@@ -35,10 +48,12 @@ const BlogIndex = ({ data, location }) => {
                                 <header>
                                     <h2>
                                         <Link to={post.fields.slug} itemProp='url'>
-                                            <span itemProp='headline'>{title}</span>
+                                            <span itemProp='headline' data-content>
+                                                {title}
+                                            </span>
                                         </Link>
                                     </h2>
-                                    <small>{post.frontmatter.date}</small>
+                                    <small data-content>{post.frontmatter.date}</small>
                                 </header>
                                 <section>
                                     <p
@@ -47,6 +62,7 @@ const BlogIndex = ({ data, location }) => {
                                         }}
                                         itemProp='description'
                                     />
+                                    <p data-content>just content</p>
                                 </section>
                             </article>
                         </li>

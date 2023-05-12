@@ -1,23 +1,34 @@
 require('dotenv').config();
 
 const myQuery = `query {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-            nodes {
-            id
-                frontmatter {
-                    title
-                    description
-                }
-            }
-        }
-    }`;
+  allMarkdownRemark(filter: { frontmatter: { title: { eq: "Index" } } }) {
+    nodes {
+      id
+      frontmatter {
+        title
+        description
+      }
+    }
+  }
+}
+`;
 
 const queries = [
     {
         query: myQuery,
         queryVariables: {},
         transformer: ({ data }) => {
-            return data.allMarkdownRemark.nodes;
+            const dataTO = data.allMarkdownRemark.nodes.map((node) => {
+                return {
+                    objectID: node.id,
+                    title: node.frontmatter.title,
+                    description: node.frontmatter.description,
+                    content: 'hello from contentet',
+                    something: 'just to work'
+                };
+            });
+
+            return dataTO;
         }
     }
 ];
@@ -171,8 +182,8 @@ module.exports = {
         {
             resolve: `gatsby-plugin-algolia`,
             options: {
-                appId: `TLBKQDFCMT`,
-                apiKey: process.env.ALGOLIA_APP_ID,
+                appId: `BRI0NNU1NY`,
+                apiKey: process.env.ALGOLIA_API_KEY,
                 indexName: `test`,
                 queries,
                 chunkSize: 10000,
