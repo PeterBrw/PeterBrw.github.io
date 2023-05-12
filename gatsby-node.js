@@ -1,7 +1,7 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const convertReactFilesToMD = require('./convertReactToMd');
-const deleteMDHardCodedFiles = require('./deleteMDHardCodedFiles');
+const deleteMDHardCodedFiles = require(path.resolve('./deleteMDHardCodedFiles'));
 
 exports.onPreInit = async () => {
     await convertReactFilesToMD();
